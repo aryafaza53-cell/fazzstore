@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fazz PhoneStore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        // Check if the user is logged in
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <header>
+        <h1>Fazz PhoneStore</h1>
+        <div class="cart-icon" onclick="toggleCart()">
+            <span>Keranjang (<span id="cart-count">0</span>)</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Cari handphone...">
+        </div>
+
+        <div id="product-list" class="product-container">
+            </div>
+    </main>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleCart()">&times;</span>
+            <h2>Keranjang Belanja</h2>
+            <div id="cart-items"></div>
+            <p>Total: Rp<span id="total-price">0</span></p>
+            <button onclick="checkout()" class="primary-btn">Checkout</button>
+        </div>
+    </div>
+
+    <div id="checkout-page" class="checkout-container" style="display: none;">
+        <h2>Checkout</h2>
+        <form id="checkout-form">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" required>
+            <label for="address">Alamat:</label>
+            <input type="text" id="address" required>
+            <button type="submit" class="primary-btn">Bayar Sekarang</button>
+        </form>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
